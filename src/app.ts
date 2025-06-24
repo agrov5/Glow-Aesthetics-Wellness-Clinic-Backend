@@ -9,7 +9,7 @@ app.use(express.json());
 // Routes
 
 /// API Endpoint
-app.use("/api", authMiddleware);
-app.use("/api/bookings", bookingRoutes);
+app.use("/", authMiddleware);
+app.use("/bookings", bookingRoutes);
 
 export default app;
