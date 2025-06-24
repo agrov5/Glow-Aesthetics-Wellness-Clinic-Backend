@@ -1,8 +1,6 @@
 import { Schema, model } from "mongoose";
 import { id } from "./Types";
 
-// export const ListingModel = mongoose.model("Listing", listingSchema);
-
 export interface AppointmentDetails {
   fullName: string;
   email: string;
@@ -31,8 +29,8 @@ const bookingSchema = new Schema<Booking>({
   bookingCreatedAt: { type: Date, default: Date.now },
   bookingStatus: {
     type: String,
-    enum: ["pending", "confirmed", "cancelled"],
-    default: "pending",
+    enum: ["confirmed", "cancelled"],
+    default: "confirmed",
   },
 });
 
