@@ -9,7 +9,8 @@ app.use(express.json());
 // Routes
 
 /// API Endpoint
-app.use("/", authMiddleware);
-app.use("/bookings", bookingRoutes);
+
+app.use("gawc/", authMiddleware);
+app.use("gawc/bookings", bookingRoutes);
 
 export default app;
