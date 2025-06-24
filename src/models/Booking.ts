@@ -3,34 +3,32 @@ import { id } from "./Types";
 
 // export const ListingModel = mongoose.model("Listing", listingSchema);
 
+export interface AppointmentDetails {
+  fullName: string;
+  email: string;
+  phone: string;
+  service: string;
+  appointmentDate: Date;
+  appointmentTime: string;
+}
+
 export interface Booking {
   _id?: id;
-  listingId: id;
-  userId: id;
-  bookingDate: Date;
+  appointmentDetails: AppointmentDetails;
   bookingCreatedAt: Date;
   bookingStatus: "pending" | "confirmed" | "cancelled";
 }
 
-const bookingSchema = new Schema({
-  listingId: {
-    type: Schema.Types.ObjectId,
-    ref: "Listing",
-    required: true,
+const bookingSchema = new Schema<Booking>({
+  appointmentDetails: {
+    fullName: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    service: { type: String, required: true },
+    appointmentDate: { type: Date, required: true },
+    appointmentTime: { type: String, required: true },
   },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  bookingDate: {
-    type: Date,
-    required: true,
-  },
-  bookingCreatedAt: {
-    type: Date,
-    default: Date.now,
-  },
+  bookingCreatedAt: { type: Date, default: Date.now },
   bookingStatus: {
     type: String,
     enum: ["pending", "confirmed", "cancelled"],
