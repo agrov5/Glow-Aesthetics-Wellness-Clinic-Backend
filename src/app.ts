@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Routes
 
-app.use(authMiddleware);
+app.use("api", authMiddleware);
 app.use("/api/bookings", bookingRoutes);
 
 export default app;
