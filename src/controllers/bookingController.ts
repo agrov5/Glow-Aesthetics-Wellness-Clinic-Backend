@@ -3,6 +3,19 @@ import { Request, Response } from "express";
 import { Booking, BookingModel } from "../models/Booking";
 import { id } from "../models/Types";
 
+export const getAllBookings = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const bookings = await BookingModel.find();
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const createBooking = async (
   req: Request,
   res: Response
