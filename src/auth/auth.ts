@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+require("dotenv").config();
 
 const VALID_USERNAME = process.env.USERNAME;
 const VALID_PASSWORD = process.env.PASSWORD;
