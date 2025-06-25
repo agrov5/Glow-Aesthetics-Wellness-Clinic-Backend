@@ -10,7 +10,7 @@ app.use(express.json());
 
 /// API Endpoint
 
-app.use("gawc/", authMiddleware);
-app.use("gawc/bookings", bookingRoutes);
+app.use("/gawc", authMiddleware);
+app.use("/gawc/bookings/", bookingRoutes);
 
 export default app;
