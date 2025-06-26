@@ -15,7 +15,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "build": "npm i && tsc",
+    "build-render": "npm i && tsc",
+    "build-azure": "tsc".
     "start": "node dist/server.js",
     "dev": "tsc && node dist/server.js"
   },
