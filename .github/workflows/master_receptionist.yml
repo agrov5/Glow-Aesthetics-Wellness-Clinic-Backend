@@ -30,7 +30,7 @@ jobs:
           AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
         run: |
           npm install
-          npm run build
+          npm run build-azure
 
       - name: Zip artifact for deployment
         run: |
