@@ -11,35 +11,33 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
+  runs-on: ubuntu-latest
+  permissions:
+    contents: read
 
-    steps:
-      - uses: actions/checkout@v4
+  steps:
+    - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22.x'
+    - name: Set up Node.js version
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22.x'
 
-      - name: npm install, build, and test
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-          AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
-          AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
-        run: |
-          npm install
-          npm run build
+    - name: npm install and build
+      run: |
+        npm ci
+        npm run build
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+    - name: Create deployment package (exclude node_modules)
+      run: |
+        zip -r release.zip * .[^.]* -x "**/node_modules/**"
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app
-          path: release.zip
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v4
+      with:
+        name: node-app
+        path: release.zip
+
 
   deploy:
     runs-on: ubuntu-latest
