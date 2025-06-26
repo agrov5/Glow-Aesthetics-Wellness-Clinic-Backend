@@ -24,6 +24,10 @@ jobs:
           node-version: '22.x'
 
       - name: npm install, build, and test
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+          AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
         run: |
           npm install
           npm run build
