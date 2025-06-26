@@ -16,7 +16,7 @@
   "main": "index.js",
   "scripts": {
     "buildrender": "npm i && tsc",
-    "buildazure": "tsc".
+    "buildazure": "tsc",
     "start": "node dist/server.js",
     "dev": "tsc && node dist/server.js"
   },
