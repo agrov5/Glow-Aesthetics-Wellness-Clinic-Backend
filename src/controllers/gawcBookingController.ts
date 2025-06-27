@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Request, Response } from "express";
-import { Booking, BookingModel } from "../models/Booking";
+import { Booking, BookingModel } from "../models/GAWC-Booking";
 import { id } from "../models/Types";
 
 export const getAllBookings = async (
@@ -17,6 +17,7 @@ export const getAllBookings = async (
 };
 
 export const createBooking = async (
+  // Create a new calendar event
   req: Request,
   res: Response
 ): Promise<void> => {
@@ -40,6 +41,7 @@ export const createBooking = async (
 };
 
 export const cancelBooking = async (
+  // Delete a calendar event
   req: Request,
   res: Response
 ): Promise<any> => {

@@ -3,7 +3,7 @@ import {
   createBooking,
   getAllBookings,
   cancelBooking,
-} from "../controllers/bookingController";
+} from "../controllers/gawcBookingController";
 
 const router = Router();
 

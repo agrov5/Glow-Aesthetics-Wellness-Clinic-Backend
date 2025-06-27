@@ -1,7 +1,21 @@
 const mongoose = require("mongoose");
+import { DatabaseReceptionistName } from "../models/Types";
+
 require("dotenv").config();
 
-export const connectDB = async () => {
+export const connectDB = async (
+  databaseURLEnding: DatabaseReceptionistName
+) => {
+  let databaseURL = "";
+
+  switch (databaseURLEnding) {
+    case DatabaseReceptionistName.GAWC:
+      databaseURL = process.env.DATABASE_URL_GAWC || "";
+
+    default:
+      break;
+  }
+
   try {
     await mongoose.connect(process.env.DATABASE_URL, {});
     console.log("Connected to MongoDB");

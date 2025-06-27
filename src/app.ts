@@ -1,5 +1,5 @@
 import express from "express";
-import bookingRoutes from "./routes/bookingRoutes";
+import bookingRoutes from "./routes/gawcBookingRoutes";
 import { authMiddleware } from "./auth/auth";
 
 const app = express();
